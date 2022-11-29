@@ -33,11 +33,14 @@
   if($_POST['register']) {
     $user = $_POST['user'];
     $email = $_POST['email'];
-    $pass1 = $_POST['pass'];
-    $pass2 = $_POST['passC'];
+    $pass = $_POST['pass'];
+    $passC = $_POST['passC'];
 
-    if ($pass1 == $pass2) {
-      $sql = 'INSERT INTO authors VALUES (NULL, )';
+    if ($pass == $passC) {
+      $stmt = $link->stmt_init();
+      
+      $stmt->prepare('INSERT INTO authors VALUES (NULL, ?, ?, ?, 1');
+      $stmt->bind_param('sss', $user, $email, $pass);
     }
   }
   ?>
@@ -47,6 +50,10 @@
       <p>
         <label for="user">Username: </label>
         <input type="text" name="user" id="user">
+      </p>
+      <p>
+        <label for="email">eMail: </label>
+        <input type="email" name="email" id="email">
       </p>
       <p>
         <label for="pass">Password: </label>
