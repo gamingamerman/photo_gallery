@@ -30,17 +30,22 @@
 </head>
 <body>
   <?php
-  if($_POST['register']) {
+  if(isset($_POST['register'])) {
+    $null = NULL;
     $user = $_POST['user'];
     $email = $_POST['email'];
     $pass = $_POST['pass'];
     $passC = $_POST['passC'];
+    $enabled = 1;
 
     if ($pass == $passC) {
       $stmt = $link->stmt_init();
       
-      $stmt->prepare('INSERT INTO authors VALUES (NULL, ?, ?, ?, 1');
-      $stmt->bind_param('sss', $user, $email, $pass);
+      $stmt->prepare('INSERT INTO authors (ID, name, email, password, enabled, created) VALUES (NULL, ?, ?, ?, ?, NULL)');
+      $stmt->bind_param('sssi',$user, $email, $pass, $enabled);
+
+      $stmt->execute();
+      $stmt->close();
     }
   }
   ?>
@@ -63,7 +68,7 @@
         <label for="passC">Confirm password: </label>
         <input type="text" name="passC" id="passC">
       </p>
-      <p><input type="button" name="register" value="Register"></p>
+      <p><input type="submit" name="register" value="Register"></p>
     </form>
   </fieldset>
 </body>
