@@ -42,12 +42,14 @@ if(isset($_POST['register'])) {
     fieldset {
       border-radius: 10px;
       font-size: x-large;
+      width: 400px;
       display: inline-block;
       border-collapse: collapse;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin: -150px 0 0 -150px;
+      margin: auto;
+    }
+
+    .content {
+      text-align: left;
     }
 
     input {
@@ -59,19 +61,19 @@ if(isset($_POST['register'])) {
   <fieldset>
     <legend>Register Page</legend>
     <form action="" method="post" name="registerForm">
-      <p>
+      <p class="content">
         <label for="user">Username: </label>
         <input type="text" name="user" id="user" required>
       </p>
-      <p>
+      <p class="content">
         <label for="email">eMail: </label>
         <input type="email" name="email" id="email" required>
       </p>
-      <p>
+      <p class="content">
         <label for="pass">Password: </label>
         <input type="text" name="pass" id="pass" required>
       </p>
-      <p>
+      <p class="content">
         <label for="passC">Confirm password: </label>
         <input type="text" name="passC" id="passC" required>
       </p>

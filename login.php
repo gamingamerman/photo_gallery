@@ -18,7 +18,7 @@ if (isset($_POST['login'])) {
     $row = $result->fetch_array();
 
     if ($row == null) {
-      echo '<h1>El usuario no existe.</h1>';
+      echo '<h1>The user doesn\'t exist.</h1>';
     }
   }
 }
@@ -39,12 +39,14 @@ if (isset($_POST['login'])) {
     fieldset {
       border-radius: 10px;
       font-size: x-large;
+      width: 400px;
       display: inline-block;
       border-collapse: collapse;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin: -150px 0 0 -165px;
+      margin: auto;
+    }
+
+    .content {
+      text-align: left;
     }
 
     input {
@@ -56,12 +58,12 @@ if (isset($_POST['login'])) {
   <fieldset>
     <legend>Login Page</legend>
     <form action="" method="post">
-      <p>
+      <p class="content">
         <label for="user">Username:
           <input type="text" name="user" id="user" required>
         </label>
       </p>
-      <p>
+      <p class="content">
         <label for="pass">Password:
           <input type="text" name="pass" id="pass" required>
         </label>
