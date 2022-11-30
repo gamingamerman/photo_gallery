@@ -1,3 +1,20 @@
+<?php include './includes/link.php';
+    session_start();
+
+    if (isset($_POST["send"])) {
+        $name = $_REQUEST["name"];
+        $text = $_REQUEST["text_photo"];
+        $enabled = $_REQUEST["enabled"];
+        $image_name = $_FILES["file"]["name"];
+        $image_size = $_FILES["file"]["size"];
+
+        $stmt->prepare("UPDATE images SET name='?', text='?', file='?', enabled=? WHERE id=" . $_GET['userID']);
+        $stmt->bind_param('sssi', $name, $text, $image_name, $enabled);
+
+        $stmt->execute();
+        $stmt->close();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,13 +26,21 @@
 <body>
     <fieldset>
         <legend>Modify Photo</legend>
-        <form action="">
-            <p>Author: <input type="text" name="author" placeholder="Author...">
+        <form action="" method="post">
+        <p>
+                * Name: <input type="text" name="name" placeholder="Name..." required>
             </p>
             <p>
-                <h3>Photo:</h3>
+                <p>Text</p>
+                <input type="text" name="text_photo">
+            </p>
+            <p>
+                Enabled? <input type="checkbox" name="enabled">
+            </p>
+            <p>
+                <h3>Photo:</h3> 
                 <br>
-                <input type="file" name="file">
+                <input type="file" name="file" required>
             </p>
             <input type="submit" name="send" value="Modify">
         </form>
