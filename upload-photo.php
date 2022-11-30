@@ -1,4 +1,6 @@
-<?php include './includes/link.php' ?>
+<?php include './includes/link.php';
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,13 +12,13 @@
 <body>
     <?php
         if(isset($_POST["send"])) {
+            $id_author = $_SESSION['userID'];
             $name = $_REQUEST["name"];
             $text_photo = "No text contained";
             $enabled = 0;
             $photo_name = $_FILES["file"]["name"];
             $photo_size = $_FILES["file"]["size"];
             $photo_loc = $_FILES["file"]["name"];
-            $exampleid = 1;
 
             if (isset($_REQUEST["text_photo"])) {
                 $text_photo = $_REQUEST["text_photo"];
@@ -31,7 +33,7 @@
             $stmt = $link->stmt_init();
 
             $stmt->prepare('INSERT INTO images (id, author_id, name, file, size, text, enabled, created) VALUES (NULL, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)');
-            $stmt->bind_param('issisi', $exampleid, $photo_name, $photo_loc, $photo_size, $text_photo, $enabled);
+            $stmt->bind_param('issisi', $id_author, $photo_name, $photo_loc, $photo_size, $text_photo, $enabled);
 
             $stmt->execute();
             $stmt->close();
