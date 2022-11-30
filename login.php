@@ -1,21 +1,20 @@
 <?php 
 include './includes/link.php';
-
+session_start();
 if (isset($_POST['login'])) {
+  
   $user = $_POST['user'];
   $pass = $_POST['pass'];
 
-  $sql = 'SELECT name, password FROM authors';
+  $sql = 'SELECT id, name, password FROM authors';
   $result = $link->query($sql);
-  $row = $result->fetch_array();
-
-  while ($row){
+  
+  while ($row = $result->fetch_array()){
     if ($user == $row['name'] && $pass == $row['password']) {
+      $_SESSION['userID'] = $row['id'];
       header('Location: photo-page.php');
       die();
     }
-
-    $row = $result->fetch_array();
 
     if ($row == null) {
       echo '<h1>The user doesn\'t exist.</h1>';
