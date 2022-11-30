@@ -41,7 +41,7 @@
     if ($pass == $passC) {
       $stmt = $link->stmt_init();
       
-      $stmt->prepare('INSERT INTO authors (ID, name, email, password, enabled, created) VALUES (NULL, ?, ?, ?, ?, NULL)');
+      $stmt->prepare('INSERT INTO authors (id, name, email, password, enabled, created) VALUES (NULL, ?, ?, ?, ?, CURRENT_TIMESTAMP)');
       $stmt->bind_param('sssi',$user, $email, $pass, $enabled);
 
       $stmt->execute();
