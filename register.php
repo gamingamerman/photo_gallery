@@ -58,6 +58,26 @@ if(isset($_POST['register'])) {
   </style>
 </head>
 <body>
+  <?php
+  if(isset($_POST['register'])) {
+    $null = NULL;
+    $user = $_POST['user'];
+    $email = $_POST['email'];
+    $pass = $_POST['pass'];
+    $passC = $_POST['passC'];
+    $enabled = 1;
+
+    if ($pass == $passC) {
+      $stmt = $link->stmt_init();
+      
+      $stmt->prepare('INSERT INTO authors (id, name, email, password, enabled, created) VALUES (NULL, ?, ?, ?, ?, CURRENT_TIMESTAMP)');
+      $stmt->bind_param('sssi',$user, $email, $pass, $enabled);
+
+      $stmt->execute();
+      $stmt->close();
+    }
+  }
+  ?>
   <fieldset>
     <legend>Register Page</legend>
     <form action="" method="post" name="registerForm">
