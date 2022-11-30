@@ -1,4 +1,5 @@
 <?php
+include './includes/link.php';
 session_start();
 ?>
 <!DOCTYPE html>
@@ -17,26 +18,30 @@ session_start();
             <th>Author</th>
         </thead>
         <tbody>
+            <?php
+            $sql = 'SELECT * FROM images';
+            $result = $link->query($sql);
+            
+            while ($row = $result->fetch_array()):
+            ?>
             <tr>
-                <td>Image1</td>
-                <td>Description1</td>
+                <td><img src="/img/<?=$row['name']?>" alt=""></td>
+                <?php
+                $sql2 = 'SELECT id, name FROM authors';
+                $result2 = $link->query($sql2);
+                while ($row2 = $result2->fetch_array()):
+                    if ($row2['id'] == $row['author_id']):
+                ?>
+                <td><?=$row2['name']?></td>
+                <?php
+                endif;
+                endwhile;
+                ?>
                 <td><button>Edit</button></td>
             </tr>
-            <tr>
-                <td>Image2</td>
-                <td>Description2</td>
-                <td><button>Edit</button></td>
-            </tr>
-            <tr>
-                <td>Image3</td>
-                <td>Description3</td>
-                <td><button>Edit</button></td>
-            </tr>
-            <tr>
-                <td>Image4</td>
-                <td>Description4</td>
-                <td><button>Edit</button></td>
-            </tr>
+            <?php
+            endwhile;
+            ?>
         </tbody>
     </table>
 </body>
