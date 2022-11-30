@@ -39,5 +39,7 @@ session_start();
             </tr>
         </tbody>
     </table>
+    <a href="upload-photo.php"><button>Upload Image</button></a>
+    
 </body>
 </html>
