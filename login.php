@@ -1,22 +1,20 @@
-<?php 
+<?php
 include './includes/link.php';
 session_start();
 if (isset($_POST['login'])) {
-  
+
   $user = $_POST['user'];
   $pass = $_POST['pass'];
 
   $sql = 'SELECT id, name, password FROM authors';
   $result = $link->query($sql);
-  
-  while ($row = $result->fetch_array()){
+
+  while ($row = $result->fetch_array()) {
     if ($user == $row['name'] && $pass == $row['password']) {
       $_SESSION['userID'] = $row['id'];
       header('Location: photo-page.php');
       die();
     }
-
-    
   }
   if ($row == null) {
     echo '<h1>The user doesn\'t exist.</h1>';
@@ -25,6 +23,7 @@ if (isset($_POST['login'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -53,6 +52,7 @@ if (isset($_POST['login'])) {
     }
   </style>
 </head>
+
 <body>
   <fieldset>
     <legend>Login Page</legend>
@@ -74,4 +74,5 @@ if (isset($_POST['login'])) {
     </form>
   </fieldset>
 </body>
+
 </html>
