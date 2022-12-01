@@ -16,9 +16,10 @@ if (isset($_POST['login'])) {
       die();
     }
 
-    if ($row == null) {
-      echo '<h1>The user doesn\'t exist.</h1>';
-    }
+    
+  }
+  if ($row == null) {
+    echo '<h1>The user doesn\'t exist.</h1>';
   }
 }
 ?>
