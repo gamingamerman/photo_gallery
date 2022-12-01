@@ -17,7 +17,7 @@ if (isset($_POST['login'])) {
     }
   }
   if ($row == null) {
-    echo '<h1>The user doesn\'t exist.</h1>';
+    echo '<div style="background-color: #cc3b3b;">The user doesn\'t exist.</div>';
   }
 }
 ?>
@@ -29,6 +29,7 @@ if (isset($_POST['login'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gallery - Log In</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <style>
     body {
       text-align: center;
@@ -43,33 +44,57 @@ if (isset($_POST['login'])) {
       margin: auto;
     }
 
-    .content {
-      text-align: left;
+    .hide {
+      border: transparent;
+      margin: 10px;
+      color: white;
     }
 
     input {
       border-radius: 5px;
     }
+
+    .title {
+      color: white;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .float {
+      text-align: left;
+    }
+    
   </style>
 </head>
 
 <body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <h1 class="title">PHOTOMENU</h1>
+    </nav>
+    
+  </header>
   <fieldset>
     <legend>Login Page</legend>
     <form action="" method="post">
-      <p class="content">
-        <label for="user">Username:
-          <input type="text" name="user" id="user" required>
+      <p>
+        <label for="user" class="float">Username:
+          <input type="text" name="user" id="user" class="form-control" required>
         </label>
       </p>
-      <p class="content">
-        <label for="pass">Password:
-          <input type="text" name="pass" id="pass" required>
+      <p class="">
+        <label for="pass" class="float">Password:
+          <input type="text" name="pass" id="pass" class="form-control" required>
         </label>
       </p>
       <p>
-        <input type="submit" name="login" value="Log In">
-        <a href="register.php"><input type="button" value="Register"></a>
+        <input type="submit" name="login" value="Log In" class="bg-primary hide bg-dark">
+        <a href="register.php"><input type="button" value="Register" class="bg-primary hide bg-dark"></a>
       </p>
     </form>
   </fieldset>
