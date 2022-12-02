@@ -28,7 +28,7 @@ if (isset($_POST['login'])) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gallery - Log In</title>
+  <title>Photomenu - Log In</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <style>
     body {
@@ -68,16 +68,13 @@ if (isset($_POST['login'])) {
     .float {
       text-align: left;
     }
-    
   </style>
 </head>
-
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <h1 class="title">PHOTOMENU</h1>
     </nav>
-    
   </header>
   <fieldset>
     <legend>Login Page</legend>
@@ -89,7 +86,7 @@ if (isset($_POST['login'])) {
       </p>
       <p class="">
         <label for="pass" class="float">Password:
-          <input type="text" name="pass" id="pass" class="form-control" required>
+          <input type="password" name="pass" id="pass" class="form-control" required>
         </label>
       </p>
       <p>
@@ -99,5 +96,4 @@ if (isset($_POST['login'])) {
     </form>
   </fieldset>
 </body>
-
 </html>

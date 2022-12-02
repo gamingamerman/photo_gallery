@@ -108,11 +108,11 @@ if(isset($_POST['register'])) {
       </p>
       <p class="content">
         <label for="pass">Password: </label>
-        <input type="text" name="pass" id="pass" class="form-control" required>
+        <input type="password" name="pass" id="pass" class="form-control" required>
       </p>
       <p class="content">
         <label for="passC">Confirm password: </label>
-        <input type="text" name="passC" id="passC" class="form-control" required>
+        <input type="password" name="passC" id="passC" class="form-control" required>
       </p>
       <p><input type="submit" name="register" value="Register" class="hide bg-dark"></p>
     </form>

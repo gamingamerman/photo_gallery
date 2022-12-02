@@ -20,6 +20,7 @@ if (isset($_POST['logout'])) {
 
 <body>
     <h2>Photo Gallery</h2>
+    <a href="/authors.php">Authors</a>
     <table border="1">
         <thead>
             <th>Photo</th>
