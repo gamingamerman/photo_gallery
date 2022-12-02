@@ -4,27 +4,34 @@ use LDAP\Result;
 include './includes/link.php';
 session_start();
 
-echo $_SESSION["userID"];
+$sql = 'SELECT * FROM images WHERE id = ' . $_GET['id'];
+$results = $link->query($sql);
+$row = $results->fetch_assoc();
 
-if (isset($_POST["send"])) {
-  $name = $_FILES["file"]["name"];
-  $text = $_REQUEST["text_photo"];
-  $enabled = 0;
-  $image_name = $_FILES["file"]["name"];
+if (isset($_POST["modify"])):
+  $text = $_POST["text_photo"];
+  $enabled;
 
-  if (isset($_REQUEST["enabled"])) {
+  if (isset($_POST["enabled"])):
     $enabled = 1;
-  } else {
+  else:
     $enabled = 0;
-  }
+  endif;
 
-  $sql = "UPDATE images SET name='$name', text='$text', file='$image_name', enabled=$enabled WHERE id=" . $_SESSION['userID'];
+  if (!($_FILES["file"]['name'] == '')):
+    $name = $_FILES["file"]["name"];
+    $image_name = $_FILES["file"]["name"];
+    $sql = "UPDATE images SET name='$name', text='$text', file='$image_name', enabled=$enabled WHERE id=" . $_GET['id'];
+    $link->query($sql);
 
-  $link->query($sql);
-  echo mysqli_errno($link);
-  echo "<br>";
-  echo $sql;
-}
+  else:
+    $sql = "UPDATE images SET text='$text', enabled=$enabled WHERE id=" . $_GET['id'];
+    $link->query($sql);
+  endif;
+
+  header('Location: photo-page.php');
+  die();
+endif;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,22 +42,23 @@ if (isset($_POST["send"])) {
   <title>PhotoMenu</title>
 </head>
 <body>
+<a href="photo-page.php">Back</a>
   <fieldset>
     <legend>Modify Photo</legend>
     <form action="" method="post" enctype="multipart/form-data">
       <p>
-      <p>Text:</p>
-      <input type="text" name="text_photo">
+        <p>Description:</p>
+        <input type="text" name="text_photo" value="<?= $row['text'] ?>">
       </p>
       <p>
-        Enabled: <input type="checkbox" name="enabled">
+        Enabled: <input type="checkbox" name="enabled" <?php if ($row['enabled'] == 1):?> checked <?php endif;?>>
       </p>
       <p>
-      <h3>Photo:</h3>
-      <br>
-      <input type="file" name="file">
+        <h3>Photo:</h3>
+        <br>
+        <input type="file" name="file">
       </p>
-      <input type="submit" name="send" value="Modify">
+      <input type="submit" name="modify" value="Modify">
     </form>
   </fieldset>
 </body>

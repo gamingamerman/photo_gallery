@@ -92,10 +92,11 @@ if(isset($_POST['register'])) {
   ?>
   <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <h1 class="title">PHOTOMENU</h1>
-    </nav>
+    <h1 class="title">PHOTOMENU</h1>
+  </nav>
   </header>
   <fieldset>
+    <a href="login.php">Back</a>
     <legend><h2>Register Page</h2></legend>
     <form action="" method="post" name="registerForm">
       <p class="content">
@@ -113,6 +114,10 @@ if(isset($_POST['register'])) {
       <p class="content">
         <label for="passC">Confirm password: </label>
         <input type="password" name="passC" id="passC" class="form-control" required>
+      </p>
+      <p>
+        <label for="enable">Enable: </label>
+        <input type="checkbox" name="enable" id="enable">
       </p>
       <p><input type="submit" name="register" value="Register" class="hide bg-dark"></p>
     </form>

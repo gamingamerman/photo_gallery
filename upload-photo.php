@@ -3,18 +3,18 @@ include './includes/link.php';
 session_start();
 if(isset($_POST["send"])) {
   $id_author = $_SESSION['userID'];
-  $name = $_REQUEST["name"];
+  $name = $_POST["name"];
   $text_photo = "No text contained";
   $enabled = 0;
   $photo_name = $_FILES["file"]["name"];
   $photo_size = $_FILES["file"]["size"];
   $photo_loc = $_FILES["file"]["name"];
 
-  if (isset($_REQUEST["text_photo"])) {
-    $text_photo = $_REQUEST["text_photo"];
+  if (isset($_POST["text_photo"])) {
+    $text_photo = $_POST["text_photo"];
   }
 
-  if (isset($_REQUEST["enabled"])) {
+  if (isset($_POST["enabled"])) {
     $enabled = 1;
   } else {
     $enabled = 0;
@@ -42,6 +42,7 @@ if(isset($_POST["send"])) {
   </head>
   <body>
     <h2>Upload a Photo to the Gallery</h2>
+    <a href="photo-page.php">Back</a>
     <fieldset>
       <legend>Upload</legend>
       <form action="" method="post" enctype="multipart/form-data">
@@ -49,7 +50,7 @@ if(isset($_POST["send"])) {
           * Name: <input type="text" name="name" placeholder="Name..." required>
         </p>
         <p>
-          <p>Text:</p>
+          <label for="text_photo">Text:</label>
           <input type="text" name="text_photo">
         </p>
         <p>
