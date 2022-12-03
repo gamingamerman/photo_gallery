@@ -42,6 +42,12 @@ endif;
   <title>PhotoMenu</title>
 </head>
 <body>
+<?php
+$sql3 = 'SELECT * FROM authors WHERE id = ' . $_SESSION['userID'];
+$result3 = $link->query($sql3);
+$row3 = $result3->fetch_array();
+?>
+<p>Hi, <?= $row3['name'] ?></p>
 <a href="photo-page.php">Back</a>
   <fieldset>
     <legend>Modify Photo</legend>

@@ -19,6 +19,12 @@ if (isset($_POST['logout'])) {
 </head>
 <body>
   <h2>Photo Gallery</h2>
+  <?php
+  $sql3 = 'SELECT * FROM authors WHERE id = ' . $_SESSION['userID'];
+  $result3 = $link->query($sql3);
+  $row3 = $result3->fetch_array();
+  ?>
+  <p>Hi, <?= $row3['name'] ?></p>
   <a href="authors.php">Authors</a>
   <table border="1">
     <thead>
