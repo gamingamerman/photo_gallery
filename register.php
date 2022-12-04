@@ -58,6 +58,11 @@ if(isset($_POST['register'])) {
       margin-right: auto;
     }
 
+    .home {
+      color: white;
+      text-decoration: none;
+    }
+
     .content {
       text-align: left;
     }
@@ -72,41 +77,20 @@ if(isset($_POST['register'])) {
       color: white;
     }
 
-    .back-btn {
-      float: left;
-      
+    .back {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 20px
     }
   </style>
 </head>
 <body>
-  <?php
-  // if(isset($_POST['register'])) {
-  //   $null = NULL;
-  //   $user = $_POST['user'];
-  //   $email = $_POST['email'];
-  //   $pass = $_POST['pass'];
-  //   $passC = $_POST['passC'];
-  //   $enabled = 1;
-
-  //   if ($pass == $passC) {
-  //     $stmt = $link->stmt_init();
-      
-  //     $stmt->prepare('INSERT INTO authors (id, name, email, password, enabled, created) VALUES (NULL, ?, ?, ?, ?, CURRENT_TIMESTAMP)');
-  //     $stmt->bind_param('sssi',$user, $email, $pass, $enabled);
-
-  //     $stmt->execute();
-  //     $stmt->close();
-  //   }
-  // }
-  ?>
   <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <h1 class="title">PHOTOMENU</h1>
+    <h1 class="title"><a class="home" href="login.php">PHOTOMENU</a></h1>
   </nav>
   </header>
-  
   <fieldset>
-  <a href="login.php" class="back-btn">Back</a>
     <legend><h2>Register Page</h2></legend>
     <form action="" method="post" name="registerForm">
       <p class="content">
@@ -132,5 +116,8 @@ if(isset($_POST['register'])) {
       <p><input type="submit" name="register" value="Register" class="hide bg-dark"></p>
     </form>
   </fieldset>
+  <p>
+    <a href="login.php" class="back">Back</a>
+  </p>
 </body>
 </html>

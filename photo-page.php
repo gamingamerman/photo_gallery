@@ -27,6 +27,11 @@ if (isset($_POST['logout'])) {
       margin-left: 10px
     }
 
+    .home {
+      color: white;
+      text-decoration: none;
+    }
+
     .head-table{
       background-color: #454545;
       color: white;
@@ -65,7 +70,7 @@ if (isset($_POST['logout'])) {
 <body>
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <h1 class="title">PHOTOMENU</h1>
+      <h1 class="title"><a class="home" href="photo-page.php">PHOTOMENU</a></h1>
       <a href="upload-photo.php"><button class="btn-border">Upload Image</button></a>
       <a href="authors.php" ><button class="btn-border">Authors</button></a>
       <a href="your-images.php" ><button class="btn-border">Your Images</button></a>

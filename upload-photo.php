@@ -53,49 +53,54 @@ if(isset($_POST["send"])) {
       }
 
       .title {
-      color: white;
-      margin-left: 10px
-    }
+        color: white;
+        margin-left: 10px
+      }
 
-    .head-table{
-      background-color: #454545;
-      color: white;
-    }
+      .home {
+        color: white;
+        text-decoration: none;
+      }
 
-    .btn-border {
-      border: transparent;
-      color: black;
-      background-color: white;
-      border-radius: 10px;
-      margin-left: 100px
-    }
+      .head-table{
+        background-color: #454545;
+        color: white;
+      }
 
-    .logout {
-     margin-left:auto;
-     margin-right:10px
-    }
+      .btn-border {
+        border: transparent;
+        color: black;
+        background-color: white;
+        border-radius: 10px;
+        margin-left: 100px
+      }
 
-    .centered {
-      text-align:center;
-    }
+      .logout {
+      margin-left:auto;
+      margin-right:10px
+      }
 
-    .btn-centered {
-      margin-top: 50%;
-      
-    }
+      .centered {
+        text-align:center;
+      }
 
-    .btn-edit {
-      border: transparent;
-      color: white;
-      background-color: black;
-      border-radius: 5px;
-    }
+      .btn-centered {
+        margin-top: 50%;
+        
+      }
+
+      .btn-edit {
+        border: transparent;
+        color: white;
+        background-color: black;
+        border-radius: 5px;
+      }
     </style>
   </head>
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <h1 class="title">PHOTOMENU</h1>
+        <h1 class="title"><a class="home" href="photo-page.php">PHOTOMENU</a></h1>
         <a href="upload-photo.php"><button class="btn-border">Upload Image</button></a>
         <a href="authors.php" ><button class="btn-border">Authors</button></a>
         <a href="your-images.php" ><button class="btn-border">Your Images</button></a>

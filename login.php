@@ -35,6 +35,11 @@ if (isset($_POST['login'])) {
       text-align: center;
     }
 
+    .home {
+      color: white;
+      text-decoration: none;
+    }
+
     fieldset {
       border-radius: 10px;
       font-size: x-large;
@@ -73,7 +78,7 @@ if (isset($_POST['login'])) {
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <h1 class="title">PHOTOMENU</h1>
+      <h1 class="title"><a class="home" href="login.php">PHOTOMENU</a></h1>
     </nav>
   </header>
   <fieldset>
