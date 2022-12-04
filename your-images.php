@@ -19,7 +19,7 @@
     <title>PhotoMenu</title>
 </head>
 <body>
-    <a href="photo-page.php">back</a>
+    <a href="photo-page.php">Back</a>
     <h2>Your images</h2>
     <table border="1">
     <thead>
