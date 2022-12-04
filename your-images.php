@@ -12,12 +12,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <title>PhotoMenu</title>
-    <style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <title>PhotoMenu</title>
+  <style>
+    .back {
+      margin-top: 20px
+      text-align: center;
+      font-size: 25px
+    }
+
     .title {
       color: white;
       margin-left: 10px
@@ -37,8 +43,8 @@
     }
 
     .logout {
-     margin-left:auto;
-     margin-right:10px
+    margin-left:auto;
+    margin-right:10px
     }
 
     .centered {
@@ -56,10 +62,10 @@
       background-color: black;
       border-radius: 5px;
     }
-    </style>
+  </style>
 </head>
 <body>
-<header>
+  <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <h1 class="title">PHOTOMENU</h1>
       <a href="upload-photo.php"><button class="btn-border">Upload Image</button></a>
@@ -69,9 +75,14 @@
         <button name="logout" class="btn-border">Log Out</button>
       </form>
     </nav>
-    
-</header>
+  </header>
     <h2>Your images</h2>
+    <?php
+    $sql3 = 'SELECT * FROM authors WHERE id = ' . $_SESSION['userID'];
+    $result3 = $link->query($sql3);
+    $row3 = $result3->fetch_array();
+    ?>
+    <p>Hi, <?= $row3['name'] ?></p>
     <table border="1" class="table table-bordered">
     <thead class="head-table">
       <th>Photo</th>
@@ -85,25 +96,29 @@
         $row = $result->fetch_assoc();
         while($row != null) {
     ?>
-        <tr>
-            <td><img src="./img/<?= $row['name'] ?>" alt=""></td>
-            <td><?= $row['text'] ?></td>
-            <td><input type="checkbox"
-            <?php
-            if ($row['enabled'] == 1) {
-                echo 'checked';
-            } else {
-                echo 'null';
-            }
-            ?>
-            ></td>
-            <td><a href="modify-photo.php?id=<?= $row['id'] ?>"><button class="btn-centered btn-edit">Edit</button></a></td>
-        </td>
+    <tr>
+      <td><img src="./img/<?= $row['name'] ?>" alt=""></td>
+      <td><?= $row['text'] ?></td>
+      <td><input type="checkbox"
+      <?php
+      if ($row['enabled'] == 1) {
+        echo 'checked';
+      } else {
+        echo 'null';
+      }
+      ?>
+      ></td>
+      <td><a href="modify-photo.php?id=<?= $row['id'] ?>"><button class="btn-centered btn-edit">Edit</button></a></td>
+    </td>
     <?php
         $row = $result->fetch_assoc();
         }
     ?>
     </tbody>
   </table>
+  <br>
+  <p class="back">
+    <a href="photo-page.php">Back</a>
+  </p>
 </body>
 </html>
