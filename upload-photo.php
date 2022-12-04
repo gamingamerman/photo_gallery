@@ -30,6 +30,9 @@ if(isset($_POST["send"])) {
   $stmt->prepare('INSERT INTO images (id, author_id, name, file, size, text, enabled, created) VALUES (NULL, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)');
   $stmt->bind_param('issisi', $id_author, $photo_name, $photo_loc, $photo_size, $text_photo, $enabled);
 
+  //meter imagen en img desde cualquier dir
+  // move_uploaded_file($_FILES["file"]["tmp_name"], "/img");
+
   $stmt->execute();
   $stmt->close();
 
@@ -50,58 +53,44 @@ if(isset($_POST["send"])) {
         text-align: center;
       }
 
-      fieldset {
-        border-radius: 10px;
-        font-size: x-large;
-        width: 400px;
-        display: inline-block;
-        border-collapse: collapse;
-        margin: auto;
-      }
-
-      .back {
-        margin-top: 20px
-        text-align: center;
-        font-size: 25px
-      }
-
-      .hide {
-        border: transparent;
-        margin: 10px;
-        color: white;
-      }
-
-      input {
-        border-radius: 5px;
-      }
-
       .title {
-        color: white;
-        margin-left: 20px;
-        margin-right: auto;
-      }
+      color: white;
+      margin-left: 10px
+    }
 
-      .center {
-        margin-left: auto;
-        margin-right: auto;
-      }
+    .head-table{
+      background-color: #454545;
+      color: white;
+    }
 
-      .float {
-        text-align: left;
-      }
+    .btn-border {
+      border: transparent;
+      color: black;
+      background-color: white;
+      border-radius: 10px;
+      margin-left: 100px
+    }
 
-      .btn-border {
-        border: transparent;
-        color: black;
-        background-color: white;
-        border-radius: 10px;
-        margin-left: 100px
-      }
+    .logout {
+     margin-left:auto;
+     margin-right:10px
+    }
 
-      .logout {
-      margin-left:auto;
-      margin-right:10px
-      }
+    .centered {
+      text-align:center;
+    }
+
+    .btn-centered {
+      margin-top: 50%;
+      
+    }
+
+    .btn-edit {
+      border: transparent;
+      color: white;
+      background-color: black;
+      border-radius: 5px;
+    }
     </style>
   </head>
   <body>
