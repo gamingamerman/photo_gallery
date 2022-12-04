@@ -30,8 +30,7 @@ if (!isset($_SESSION["userID"])) {
       <th>Name</th>
       <th>eMail</th>
       <th>Created</th>
-      <th>Enable</th>
-      <th>Delete</th>
+      <th>Enabled</th>
     </thead>
     <tbody>
       <?php
@@ -53,9 +52,6 @@ if (!isset($_SESSION["userID"])) {
             echo '<img src="./img/inactive.png" alt="disabled">';
           }
           ?>
-        </td>
-        <td>
-          <button>X</button>
         </td>
       </tr>
       <?php
