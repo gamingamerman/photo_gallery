@@ -74,7 +74,7 @@ if (isset($_POST['logout'])) {
       </form>
     </nav>
     
-  </header>
+</header>
   <?php
   $sql3 = 'SELECT * FROM authors WHERE id = ' . $_SESSION['userID'];
   $result3 = $link->query($sql3);
