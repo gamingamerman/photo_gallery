@@ -4,6 +4,10 @@ use LDAP\Result;
 include './includes/link.php';
 session_start();
 
+if (!isset($_SESSION["userID"])) {
+  header('Location: login.php');
+}
+
 $sql = 'SELECT * FROM images WHERE id = ' . $_GET['id'];
 $results = $link->query($sql);
 $row = $results->fetch_assoc();

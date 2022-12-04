@@ -1,6 +1,11 @@
 <?php
 include './includes/link.php';
 session_start();
+
+if (!isset($_SESSION["userID"])) {
+  header('Location: login.php');
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,11 +47,11 @@ session_start();
         <td><?= $row['created'] ?></td>
         <td>
           <?php
-          if ($row['enabled'] == 1):
+          if ($row['enabled'] == 1) {
             echo '<img src="./img/active.png" alt="enabled">';
-          else:
+          } else {
             echo '<img src="./img/inactive.png" alt="disabled">';
-          endif;
+          }
           ?>
         </td>
         <td>

@@ -2,6 +2,10 @@
 include './includes/link.php';
 session_start();
 
+if (!isset($_SESSION["userID"])) {
+  header('Location: login.php');
+}
+
 if (isset($_POST['logout'])) {
   session_unset();
   session_destroy();
@@ -26,6 +30,7 @@ if (isset($_POST['logout'])) {
   ?>
   <p>Hi, <?= $row3['name'] ?></p>
   <a href="authors.php">Authors</a>
+  <a href="your-images.php">Your images</a>
   <table border="1">
     <thead>
       <th>Photo</th>
@@ -42,7 +47,7 @@ if (isset($_POST['logout'])) {
         if ($row['enabled'] == 1):
       ?>
       <tr>
-        <td><img src="/img/<?= $row['name'] ?>" alt=""></td>
+        <td><img src="./img/<?= $row['name'] ?>" alt=""></td>
 
         <?php
         $sql2 = 'SELECT id, name FROM authors';

@@ -7,7 +7,11 @@ if(isset($_POST['register'])) {
   $email = $_POST['email'];
   $pass = $_POST['pass'];
   $passC = $_POST['passC'];
-  $enabled = 1;
+  $enabled = 0;
+  
+  if (isset($_POST["enable"])) {
+    $enabled = 1;
+  }
 
   if ($pass == $passC) {
     $stmt = $link->stmt_init();
@@ -67,36 +71,42 @@ if(isset($_POST['register'])) {
       margin: 10px;
       color: white;
     }
+
+    .back-btn {
+      float: left;
+      
+    }
   </style>
 </head>
 <body>
   <?php
-  if(isset($_POST['register'])) {
-    $null = NULL;
-    $user = $_POST['user'];
-    $email = $_POST['email'];
-    $pass = $_POST['pass'];
-    $passC = $_POST['passC'];
-    $enabled = 1;
+  // if(isset($_POST['register'])) {
+  //   $null = NULL;
+  //   $user = $_POST['user'];
+  //   $email = $_POST['email'];
+  //   $pass = $_POST['pass'];
+  //   $passC = $_POST['passC'];
+  //   $enabled = 1;
 
-    if ($pass == $passC) {
-      $stmt = $link->stmt_init();
+  //   if ($pass == $passC) {
+  //     $stmt = $link->stmt_init();
       
-      $stmt->prepare('INSERT INTO authors (id, name, email, password, enabled, created) VALUES (NULL, ?, ?, ?, ?, CURRENT_TIMESTAMP)');
-      $stmt->bind_param('sssi',$user, $email, $pass, $enabled);
+  //     $stmt->prepare('INSERT INTO authors (id, name, email, password, enabled, created) VALUES (NULL, ?, ?, ?, ?, CURRENT_TIMESTAMP)');
+  //     $stmt->bind_param('sssi',$user, $email, $pass, $enabled);
 
-      $stmt->execute();
-      $stmt->close();
-    }
-  }
+  //     $stmt->execute();
+  //     $stmt->close();
+  //   }
+  // }
   ?>
   <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <h1 class="title">PHOTOMENU</h1>
   </nav>
   </header>
+  
   <fieldset>
-    <a href="login.php">Back</a>
+  <a href="login.php" class="back-btn">Back</a>
     <legend><h2>Register Page</h2></legend>
     <form action="" method="post" name="registerForm">
       <p class="content">

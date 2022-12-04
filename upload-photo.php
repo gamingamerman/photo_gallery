@@ -1,6 +1,11 @@
 <?php
 include './includes/link.php';
 session_start();
+
+if (!isset($_SESSION["userID"])) {
+  header('Location: login.php');
+}
+
 if(isset($_POST["send"])) {
   $id_author = $_SESSION['userID'];
   $name = $_POST["name"];
