@@ -8,7 +8,6 @@ if (!isset($_SESSION["userID"])) {
 
 if(isset($_POST["send"])) {
   $id_author = $_SESSION['userID'];
-  $name = $_POST["name"];
   $text_photo = "No text contained";
   $enabled = 0;
   $photo_name = $_FILES["file"]["name"];
