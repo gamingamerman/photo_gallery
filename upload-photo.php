@@ -126,13 +126,8 @@ if(isset($_POST["send"])) {
       <legend>Upload Photo</legend>
       <form action="" method="post" enctype="multipart/form-data">
         <p>
-          <label for="name" class="float">*Name:
-            <input type="text" name="name" placeholder="Name..." required>
-          </label>
-        </p>
-        <p>
-          <label for="text_photo" class="float">Text:
-            <input type="text" name="text_photo">
+          <label for="text_photo" class="float">Description:
+            <input type="text" name="text_photo" placeholder="Add some description...">
           </label>
         </p>
         <p class="float">
